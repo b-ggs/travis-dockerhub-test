@@ -1,0 +1,16 @@
+if: branch = master
+
+env:
+  - DOCKER_REPO=bxggs
+  - DOCKER_IMAGE=travis-dockerhub-test
+  - DEFAULT_DOCKER_TAG=latest
+
+services:
+  - docker
+
+before_script:
+  - docker build -t "$DOCKER_REPO/$DOCKER_IMAGE:$DEFAULT_DOCKER_TAG" .
+
+deploy:
+  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+  - docker push "$DOCKER_REPO/$DOCKER_IMAGE:$DEFAULT_DOCKER_TAG"
