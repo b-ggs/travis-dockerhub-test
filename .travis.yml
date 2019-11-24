@@ -1,9 +1,10 @@
 if: branch = master
 
 env:
-  - DOCKER_REPO=bxggs
-  - DOCKER_IMAGE=travis-dockerhub-test
-  - DEFAULT_DOCKER_TAG=latest
+  global:
+    - DOCKER_REPO=bxggs
+    - DOCKER_IMAGE=travis-dockerhub-test
+    - DEFAULT_DOCKER_TAG=latest
 
 services:
   - docker
