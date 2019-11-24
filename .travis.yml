@@ -1,5 +1,7 @@
 if: branch = master
 
+language: generic
+
 env:
   global:
     - DOCKER_REPO=bxggs
