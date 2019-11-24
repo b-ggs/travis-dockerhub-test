@@ -13,5 +13,5 @@ before_script:
   - docker build -t "$DOCKER_REPO/$DOCKER_IMAGE:$DEFAULT_DOCKER_TAG" .
 
 deploy:
-  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-  - docker push "$DOCKER_REPO/$DOCKER_IMAGE:$DEFAULT_DOCKER_TAG"
+  provider: script
+  script: bash -c 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin && docker push "$DOCKER_REPO/$DOCKER_IMAGE:$DEFAULT_DOCKER_TAG"'
