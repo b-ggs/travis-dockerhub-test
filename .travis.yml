@@ -11,9 +11,9 @@ services:
 
 before_script:
   - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
-      export DOCKER_TAG=$DEFAULT_DOCKER_TAG
+      export DOCKER_TAG=$DEFAULT_DOCKER_TAG;
     else
-      export DOCKER_TAG=$(echo "$TRAVIS_BRANCH" | awk '{ gsub("/", "-"); print $0 }')
+      export DOCKER_TAG=$(echo "$TRAVIS_BRANCH" | awk '{ gsub("/", "-"); print $0 }');
     fi
   - docker build -t "$DOCKER_REPO/$DOCKER_IMAGE:$DEFAULT_DOCKER_TAG" .
 
